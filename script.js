@@ -134,23 +134,33 @@ function replay() {
   popup.style.display = "none";
 }
 
+const upKey = 38
+const downKey = 40
+const leftKey = 37
+const rightKey = 39
+// let keyDisplay = document.querySelector(".keyDisplay");
+
 function checkKey(e) {
   keyDisplay.textContent = e.keyCode;
-  if (e.keyCode == '38') {
-    direction = -width;
-    keyDisplay.textContent = keyDisplay.textContent + " ( ↑ )";
-  }
-  else if (e.keyCode == '40') {
-    direction = width;
-    keyDisplay.textContent = keyDisplay.textContent + " ( ↓ )";
-  }
-  else if (e.keyCode == '37') {
-    direction = -1;
-    keyDisplay.textContent = keyDisplay.textContent + " ( ← )";
-  }
-  else if (e.keyCode == '39') {
-    direction = +1;
-    keyDisplay.textContent = keyDisplay.textContent + " ( → )";
+  switch (e.keyCode) {
+    case upKey:
+      direction = -width;
+      keyDisplay.textContent = keyDisplay.textContent + " ( ↑ )";
+      break;
+    case downKey:
+      direction = width;
+      keyDisplay.textContent = keyDisplay.textContent + " ( ↓ )";
+      break;
+    case leftKey:
+      direction = -1;
+      keyDisplay.textContent = keyDisplay.textContent + " ( ← )";
+      break;
+    case rightKey:  
+      direction = +1;
+      keyDisplay.textContent = keyDisplay.textContent + " ( → )";
+      break;
+    default:
+      console.log("Key is not supported")
   }
 }
 
