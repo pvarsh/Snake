@@ -7,11 +7,16 @@ let down = document.querySelector(".down");
 let right = document.querySelector(".right");
 let up = document.querySelector(".up");
 
-// Elements to display snake coordinates and direction
+// Elements to display debugging info
 let snakeCoords = document.querySelector(".snakeCoords");
 let snakeDir = document.querySelector(".snakeDir");
 let keyDisplay = document.querySelector(".keyDisplay");
 
+
+const upKey = 38
+const downKey = 40
+const leftKey = 37
+const rightKey = 39
 
 let width = 10;
 let currentIndex = 0;
@@ -22,6 +27,7 @@ let score = 0;
 let speed = 0.8;
 let intervalTime = 0;
 let interval = 0;
+let directionChanged = false;
 
 document.onkeydown = checkKey;
 
@@ -69,9 +75,10 @@ function moveSnake(squares) {
   let tail = currentSnake.pop();
   squares[tail].classList.remove("snake");
   currentSnake.unshift(currentSnake[0] + direction);
+
+  // update debugging display
   snakeCoords.textContent = currentSnake;
   snakeDir.textContent = direction;
-
 
   // movement ends here
   eatApple(squares, tail);
@@ -134,11 +141,7 @@ function replay() {
   popup.style.display = "none";
 }
 
-const upKey = 38
-const downKey = 40
-const leftKey = 37
-const rightKey = 39
-// let keyDisplay = document.querySelector(".keyDisplay");
+
 
 function checkKey(e) {
   keyDisplay.textContent = e.keyCode;
