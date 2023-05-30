@@ -21,8 +21,12 @@ body {
   height: 20px;
 }
 
-.snake {
+.snake1 {
   background: blue;
+}
+
+.snake2 {
+  background: green;
 }
 
 .apple {
